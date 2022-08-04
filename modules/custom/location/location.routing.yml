@@ -1,0 +1,7 @@
+location.admin_configuration_form:
+  path: '/admin/config/location'
+  defaults:
+    _form: '\Drupal\location\Form\LocationConfigForm'
+    _title: 'Admin Configuration form for Location'
+  requirements:
+    _permission: 'access administartion pages'
