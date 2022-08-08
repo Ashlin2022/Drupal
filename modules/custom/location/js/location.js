@@ -3,18 +3,22 @@
  * Replace date and time.
  */
 
- (function ($, Drupal, drupalSettings) {
+ (function ($, Drupal) {
 
-    'use strict';
-    var $dateTime = "";
-
-    Drupal.behaviors.locationData = {
-      attach: function () {
-        $dateTime = $(".location-details").find(".date-time");
-        if ($dateTime) {
-          $(".location-details .date-time").text(drupalSettings.locationData.date_time);
+  'use strict';
+  Drupal.behaviors.locationAjaxGetTime = {
+    attach: function () {
+      $.ajax({
+        url: Drupal.url('location-ajax-response'),
+        type: 'POST',
+        dataType: 'json',
+        success: function (response) {
+          if (response.hasOwnProperty('date_time')) {
+            $(".location-details .date-time").text(response.date_time);
+          }
         }
-      }
-    };
-  
-  })(jQuery, Drupal, drupalSettings);
+      });
+    }
+  };
+
+})(jQuery, Drupal);

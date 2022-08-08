@@ -1,8 +1,10 @@
 <?php
+
 /**
  * @file  
- * Contains Drupal\location\Services\TimeService. 
+ * Contains Drupal\location\Services\TimeService.
  */
+
 namespace Drupal\location\Services;
 
 use Drupal\Core\Config\ConfigFactory;
@@ -13,6 +15,7 @@ use Drupal\Core\Datetime\DateFormatter;
  * @package Drupal\location\Services
  */
 class TimeService {
+
   /**
    * @var $config_factory \Drupal\Core\Config\ConfigFactory
    */
@@ -34,12 +37,14 @@ class TimeService {
   }
 
   /**
-   * @return $date_time
+   * Function that returns date and time.
+   * @return string $date_time
    */
-  public function getDateTime() {
+  public function getDateTime(): string {
     $timezone = $this->config_factory->get('location.adminconfiguration')->get('timezone');
     $current_time = time();
     $date_time = $this->date_formatter->format($current_time, 'custom', 'jS M Y h:i A', $timezone);
     return $date_time;
   }
+
 }

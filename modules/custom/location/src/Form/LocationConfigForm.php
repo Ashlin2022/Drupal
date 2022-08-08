@@ -1,14 +1,18 @@
 <?php
+
 /**
  * @file  
  * Contains Drupal\location\Form\LocationConfigForm. 
  */
+
 namespace Drupal\location\Form;
-use Drupal\Core\Form\ConfigFormBase;  
+
+use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
   
 class LocationConfigForm extends ConfigFormBase {
-  /**  
+
+  /**
    * {@inheritdoc}
    */
   public function getFormId() {
@@ -20,16 +24,16 @@ class LocationConfigForm extends ConfigFormBase {
    */
   protected function getEditableConfigNames() {  
     return [  
-      'location.adminconfiguration',  
-    ];  
+      'location.adminconfiguration',
+    ];
   }
 
   /**  
    * {@inheritdoc}  
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $config = $this->config('location.adminconfiguration');  
-  
+    $config = $this->config('location.adminconfiguration');
+
     $form['country'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Country'),
@@ -58,7 +62,7 @@ class LocationConfigForm extends ConfigFormBase {
         'Europe/London' => t('Europe/London'),
       ],
       '#default_value' => $config->get('timezone'),
-    ];  
+    ];
   
     return parent::buildForm($form, $form_state);
   }

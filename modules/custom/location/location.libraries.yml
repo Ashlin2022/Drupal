@@ -1,3 +1,5 @@
 location:
   js:
     js/location.js: {}
+  dependencies:
+    - core/drupal.ajax

@@ -5,3 +5,10 @@ location.admin_configuration_form:
     _title: 'Admin Configuration form for Location'
   requirements:
     _permission: 'access administartion pages'
+
+location.location_ajax_response:
+  path: '/location-ajax-response'
+  defaults:
+    _controller: '\Drupal\location\Controller\LocationAjaxController::createLocationAjaxResponse'
+  requirements:
+    _permission: 'access content'

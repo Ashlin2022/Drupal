@@ -53,7 +53,7 @@ class LocationBlock extends BlockBase implements ContainerFactoryPluginInterface
    * @param mixed $plugin_definition
    * @param \Drupal\location\Services\TimeService $time
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, 
+  public function __construct(array $configuration, $plugin_id, $plugin_definition,
   ConfigFactoryInterface $config_factory, TimeService $date_time) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->configFactory = $config_factory;
@@ -72,14 +72,12 @@ class LocationBlock extends BlockBase implements ContainerFactoryPluginInterface
       '#country' =>  $country,
       '#city'  =>  $city,
       '#date_time' => $date_time,
-      '#attached' => [
-        'drupalSettings' => [
-          'locationData' => [
-            'country' => $country,
-            'city'=> $city,
-            'date_time' => $date_time,
-          ],
+      '#cache' => [
+        'tags' => [
+          'config:location.adminconfiguration',
         ],
+      ],
+      '#attached' => [
         'library' => [
           'location/location',
         ],
